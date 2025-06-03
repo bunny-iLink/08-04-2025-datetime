@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   timezones: string[] = [];
 
   private intervalId: any;
-  private apiUrl = 'https://csharp-timeapi.onrender.com/api/time';
+  private apiUrl = 'https://zero8-04-2025-datetime.onrender.com/api/time';
 
   constructor(private http: HttpClient) { }
 

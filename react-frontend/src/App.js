@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_BASE = 'https://csharp-timeapi.onrender.com/api/time';
+const API_BASE = 'https://zero8-04-2025-datetime.onrender.com/api/time';
 
 const App = () => {
   const [localTime, setLocalTime] = useState('');
