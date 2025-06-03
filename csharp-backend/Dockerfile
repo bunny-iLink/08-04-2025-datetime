@@ -2,18 +2,18 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy solution and project files
-COPY csharp-backend/backend.csproj ./csharp-backend/
+# Copy only what is necessary for restore
 COPY csharp-backend/timeapi.sln ./
+COPY csharp-backend/backend.csproj ./
 
-# Restore dependencies
-RUN dotnet restore ./timeapi.sln
+# Restore
+RUN dotnet restore timeapi.sln
 
-# Copy everything else
-COPY csharp-backend/ ./csharp-backend/
+# Copy the rest of the backend project
+COPY csharp-backend/. .
 
-# Publish the application
-RUN dotnet publish ./csharp-backend/backend.csproj -c Release -o /out
+# Build and publish the app
+RUN dotnet publish backend.csproj -c Release -o /out
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
